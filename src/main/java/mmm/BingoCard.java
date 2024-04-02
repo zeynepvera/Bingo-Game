@@ -9,6 +9,7 @@ import java.util.HashSet;
 import java.util.Random;
 import java.util.Set;
 import javax.swing.JTextField;
+import javax.swing.Timer;
 
 /**
  *
@@ -20,6 +21,10 @@ public class BingoCard extends javax.swing.JFrame {
     JTextField[][] panel4Rows = new JTextField[3][9];
     MultiLinkedList m2 = new MultiLinkedList();
     MultiLinkedList m4 = new MultiLinkedList();
+    
+    
+  private Set<Integer> usedNumbers = new HashSet<>();
+
 
     public BingoCard() {
         initComponents();
@@ -39,14 +44,25 @@ public class BingoCard extends javax.swing.JFrame {
             {jTextField37, jTextField44, jTextField36, jTextField42, jTextField45, jTextField43, jTextField48, jTextField51, jTextField54}
 
         };
-        colorRandomFields(panel2Rows);
 
+        colorRandomFields(panel2Rows);
         colorRandomFields(panel4Rows);
+
         fillAllNumbers(panel2Rows, m2);
         fillAllNumbers(panel4Rows, m4);
 
         m4.printMultilinkedList();
         m2.printMultilinkedList();
+        
+
+        // Bingo durumunu kontrol etmek için zamanlayıcı başlat
+        Timer timer = new Timer(1000, (e) -> {
+            checkBingoStatus(panel2Rows, JPanel2_Label);
+            checkBingoStatus(panel4Rows, JPanel4_Label);
+        });
+        timer.start();
+           
+     
 
     }
 
@@ -866,7 +882,8 @@ public class BingoCard extends javax.swing.JFrame {
         });
 
         jtextArea1.setBackground(new java.awt.Color(255, 255, 255));
-        jtextArea1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jtextArea1.setCursor(new java.awt.Cursor(java.awt.Cursor.MOVE_CURSOR));
+        jtextArea1.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
 
         jLabel3.setBackground(new java.awt.Color(0, 102, 102));
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -878,11 +895,13 @@ public class BingoCard extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(51, 102, 0));
         jLabel4.setText("Bingo Game...");
 
-        JPanel2_Label.setFont(new java.awt.Font("Imprint MT Shadow", 2, 18)); // NOI18N
+        JPanel2_Label.setFont(new java.awt.Font("Imprint MT Shadow", 1, 18)); // NOI18N
+        JPanel2_Label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         JPanel2_Label.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 204)));
 
         JPanel4_Label.setBackground(new java.awt.Color(153, 153, 0));
-        JPanel4_Label.setFont(new java.awt.Font("Imprint MT Shadow", 2, 18)); // NOI18N
+        JPanel4_Label.setFont(new java.awt.Font("Imprint MT Shadow", 1, 18)); // NOI18N
+        JPanel4_Label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         JPanel4_Label.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 0, 51)));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -913,14 +932,14 @@ public class BingoCard extends javax.swing.JFrame {
                         .addGap(35, 35, 35))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(42, 42, 42)
-                                .addComponent(JPanel4_Label, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(cinkobutton)
-                                .addGap(194, 194, 194)))
+                                .addGap(194, 194, 194))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(42, 42, 42)
+                                .addComponent(JPanel4_Label, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addComponent(JPanel2_Label, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(127, 127, 127))))
         );
@@ -943,23 +962,22 @@ public class BingoCard extends javax.swing.JFrame {
                         .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
-                        .addComponent(JPanel4_Label, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(33, 33, 33)
-                        .addComponent(jtextArea1, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(36, 36, 36)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(JPanel2_Label, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(cancelbutton)
-                                    .addComponent(jLabel4)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(cinkobutton, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(104, 104, 104)))))
+                        .addComponent(JPanel2_Label, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(cancelbutton)
+                            .addComponent(jLabel4)))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cinkobutton, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(104, 104, 104))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                            .addComponent(JPanel4_Label, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(31, 31, 31)
+                            .addComponent(jtextArea1, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(20, 20, 20))
         );
 
@@ -1151,7 +1169,7 @@ public class BingoCard extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_cancelbuttonActionPerformed
 
-    // Rastgele 4 text filedı seçip mavi renge boyayan metod
+    // Rastgele 4 text filedı seçip beeyaz renge boyayan metod
     private void colorRandomFields(JTextField[][] fields) {
         Random random = new Random();
 
@@ -1164,7 +1182,7 @@ public class BingoCard extends javax.swing.JFrame {
                 selectedIndexes.add(index);
             }
 
-            // Seçilen indexlere sahip olan text filedları BEY renge boyayalım
+            // Seçilen indexlere sahip olan text filedları BEYAZ renge boyayalım
             for (int index : selectedIndexes) {
                 row[index].setBackground(Color.WHITE);
             }
@@ -1179,6 +1197,8 @@ public class BingoCard extends javax.swing.JFrame {
         return randomNumber;
 
     }
+    
+   
 
     private void fillAllNumbers(JTextField[][] fields, MultiLinkedList linkedlist) {
         Set<Integer> usedNumbers = new HashSet<>();
@@ -1225,6 +1245,7 @@ public class BingoCard extends javax.swing.JFrame {
                     number++;
                 }
 
+
             }
 
             origin += 10;
@@ -1238,8 +1259,6 @@ public class BingoCard extends javax.swing.JFrame {
         // Random sınıfını kullanarak rastgele sayılar üret
         Random random = new Random();
 
-        // Kullanılan sayıları takip etmek için bir HashSet oluştur
-        // Belirtilen aralıktaki bir rastgele sayı üret
         int randomNumber;
         do {
             randomNumber = random.nextInt(maxRange - minRange + 1) + minRange;
@@ -1251,6 +1270,10 @@ public class BingoCard extends javax.swing.JFrame {
         // Üretilen sayıyı döndür
         return randomNumber;
     }
+    
+    
+    
+    
 
     private void checkTextFieldColors(JTextField... textFields) {
 
@@ -1267,20 +1290,64 @@ public class BingoCard extends javax.swing.JFrame {
             if (!text.isEmpty()) {
                 int fieldValue = Integer.parseInt(text);
                 if (fieldValue == randomNumber) {
-                    textField.setBackground(Color.BLACK);
+                    textField.setBackground(Color.YELLOW);
                     numberFound = true;
                 }
             }
         }
         if (!numberFound) {
-            jtextArea1.append(String.valueOf(randomNumber) + "\n");
+            // jtextArea1.setText(jtextArea1.getText() + String.valueOf(randomNumber) + "\n");
+            // ya da direkt 
+            jtextArea1.append(String.valueOf(randomNumber + " ,"));
         }
 
+    }
+
+    private void checkBingoStatus(JTextField[][] fields, javax.swing.JLabel label) {
+        int yellowCount = 0;
+        boolean firstBingo = false;
+        boolean secondBingo = false;
+
+        // Her bir satırdaki sarı renkteki JTextField sayısını kontrol et
+        for (JTextField[] row : fields) {
+            int rowYellowCount = 0;
+            for (JTextField textField : row) {
+                if (textField != null && textField.getBackground() == Color.YELLOW) {
+                    rowYellowCount++;
+                }
+            }
+
+            // Her bir satırdaki sarı renkteki JTextField sayısını toplam sarı sayısına ekleyin
+            yellowCount += rowYellowCount;
+
+            // Eğer bir satırdaki sarı renkteki JTextField sayısı 5 ise, 1. BINGO veya 2. BINGO olabilir
+            if (rowYellowCount == 5) {
+                if (!firstBingo) {
+                    firstBingo = true;
+                } else {
+                    secondBingo = true;
+                }
+            }
+        }
+
+        // Toplam sarı renkteki JTextField sayısına göre JLabel'a yazı yaz
+        if (yellowCount == 15) {
+            label.setText("TOMBOLA");
+        } else if (firstBingo && secondBingo) {
+            label.setText("2. BINGO");
+        } else if (firstBingo || secondBingo) {
+            label.setText("1. BINGO");
+        } else {
+            label.setText("");
+        }
     }
 
 
     private void cinkobuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cinkobuttonActionPerformed
         // TODO add your handling code here:
+
+        
+            usedNumbers.clear();
 
         // Tüm JTextField'ları bir diziye topla
         JTextField[] allTextFields = {
@@ -1303,6 +1370,50 @@ public class BingoCard extends javax.swing.JFrame {
 
     }//GEN-LAST:event_cinkobuttonActionPerformed
 
+ /*   void randomSelectTextField(ArrayList<JTextField> textFields, Color textFieldColor, int numbers[][]) {
+        ArrayList<Integer> selectedIndices = new ArrayList<>();
+        Random random = new Random();
+        int origin = 0;
+        int bound = 9;
+
+        if (numbers != null) {
+            for (int i = 0; i < 3; i++) {
+                for (int j = 0; j < 9; j++) {
+
+                    if (numbers[i][j] == -1) {
+
+                        textFields.get(j + 9 * i).setBackground(textFieldColor);
+                        textFields.get(j + 9 * i).setText("");
+                    }
+
+                }
+            }
+
+        } else {
+            // numbers dizisi null değilse, bu dizideki sayıları kullan
+            for (int i = 0; i < 3; i++) {
+
+                while (selectedIndices.size() < 4) {
+
+                    int randomindex = random.nextInt(origin, bound);
+                    if (!selectedIndices.contains(randomindex)) {
+
+                        selectedIndices.add(randomindex);
+
+                        textFields.get(randomindex).setBackground(textFieldColor);
+                        textFields.get(randomindex).setText("");
+
+                    }
+
+                }
+
+                origin += 9;
+                bound += 9;
+
+            }
+        }
+    }
+*/
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:

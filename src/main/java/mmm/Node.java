@@ -15,6 +15,7 @@ public class Node {
     int data;
     Node next;
     Node down;
+    boolean isFound;
     
     public Node(int data) {
         
@@ -22,7 +23,8 @@ public class Node {
         Node next=null;
         Node down=null;
         
+        
     }
-   
+    
 }
 

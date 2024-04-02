@@ -5,9 +5,7 @@
 package mmm;
 
 import java.util.HashSet;
-import java.util.Random;
 import java.util.Set;
-import javax.swing.JTextField;
 
 /**
  *
@@ -17,21 +15,20 @@ class MultiLinkedList {
     
 
     Node head;
-    int size;
 
     public MultiLinkedList() {
 
         this.head = null;
     }
 
-    //Yatay(next) bağlantılarını oluşturma
+    //next bağlantılarını oluşturma
     private void connectNext(Node a, Node b) {
 
         a.next = b;
 
     }
 
-    //dikey(down) bağlantılarını oluşturma
+    //down bağlantılarını oluşturma
     private void connectDown(Node a, Node b) {
         a.down = b;
     }
@@ -40,7 +37,7 @@ class MultiLinkedList {
         // Başlangıç düğümünü oluştur
         head = new Node(1);
         Node current = head;
-
+        
         // Döngüyle diğer düğümleri oluştur
         for (int i = 2; i <= 15; i++) {
             Node newNode = new Node(i);
