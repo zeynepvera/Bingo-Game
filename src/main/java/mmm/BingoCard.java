@@ -5,14 +5,9 @@
 package mmm;
 
 import java.awt.Color;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Random;
 import java.util.Set;
-import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 /**
@@ -24,16 +19,14 @@ public class BingoCard extends javax.swing.JFrame {
     JTextField[][] panel2Rows = new JTextField[3][9];
     JTextField[][] panel4Rows = new JTextField[3][9];
     MultiLinkedList m2 = new MultiLinkedList();
-        MultiLinkedList m4 = new MultiLinkedList();
-
-            
+    MultiLinkedList m4 = new MultiLinkedList();
 
     public BingoCard() {
         initComponents();
-        
+
         m2.createMultilinkedList();
         m4.createMultilinkedList();
-        
+
         JTextField[][] panel2Rows = {
             {jTextField1, jTextField2, jTextField5, jTextField3, jTextField4, jTextField6, jTextField19, jTextField22, jTextField25},
             {jTextField7, jTextField8, jTextField11, jTextField12, jTextField13, jTextField14, jTextField20, jTextField23, jTextField26},
@@ -46,14 +39,14 @@ public class BingoCard extends javax.swing.JFrame {
             {jTextField37, jTextField44, jTextField36, jTextField42, jTextField45, jTextField43, jTextField48, jTextField51, jTextField54}
 
         };
+        colorRandomFields(panel2Rows);
 
         colorRandomFields(panel4Rows);
-        colorRandomFields(panel2Rows);
-        fillAllNumbers(panel2Rows);
-        fillAllNumbers(panel4Rows);
-        
-        m2.printMultilinkedList();
+        fillAllNumbers(panel2Rows, m2);
+        fillAllNumbers(panel4Rows, m4);
+
         m4.printMultilinkedList();
+        m2.printMultilinkedList();
 
     }
 
@@ -126,7 +119,6 @@ public class BingoCard extends javax.swing.JFrame {
         cancelbutton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        startbutton = new javax.swing.JButton();
         cinkobutton = new javax.swing.JButton();
         jtextArea1 = new java.awt.TextArea();
         jLabel3 = new javax.swing.JLabel();
@@ -142,6 +134,7 @@ public class BingoCard extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(51, 153, 255));
         jPanel2.setForeground(new java.awt.Color(255, 204, 0));
 
+        jTextField1.setBackground(new java.awt.Color(0, 51, 204));
         jTextField1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jTextField1.setForeground(new java.awt.Color(255, 204, 0));
         jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -161,6 +154,7 @@ public class BingoCard extends javax.swing.JFrame {
             }
         });
 
+        jTextField5.setBackground(new java.awt.Color(0, 51, 204));
         jTextField5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jTextField5.setForeground(new java.awt.Color(255, 204, 0));
         jTextField5.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -170,6 +164,7 @@ public class BingoCard extends javax.swing.JFrame {
         jTextField3.setForeground(new java.awt.Color(255, 204, 0));
         jTextField3.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
+        jTextField4.setBackground(new java.awt.Color(0, 51, 204));
         jTextField4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jTextField4.setForeground(new java.awt.Color(255, 204, 0));
         jTextField4.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -179,6 +174,7 @@ public class BingoCard extends javax.swing.JFrame {
         jTextField6.setForeground(new java.awt.Color(255, 204, 0));
         jTextField6.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
+        jTextField19.setBackground(new java.awt.Color(0, 51, 204));
         jTextField19.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jTextField19.setForeground(new java.awt.Color(255, 204, 0));
         jTextField19.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -198,6 +194,7 @@ public class BingoCard extends javax.swing.JFrame {
             }
         });
 
+        jTextField25.setBackground(new java.awt.Color(0, 51, 204));
         jTextField25.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jTextField25.setForeground(new java.awt.Color(255, 204, 0));
         jTextField25.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -217,6 +214,7 @@ public class BingoCard extends javax.swing.JFrame {
             }
         });
 
+        jTextField8.setBackground(new java.awt.Color(0, 51, 204));
         jTextField8.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jTextField8.setForeground(new java.awt.Color(255, 204, 0));
         jTextField8.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -236,6 +234,7 @@ public class BingoCard extends javax.swing.JFrame {
             }
         });
 
+        jTextField12.setBackground(new java.awt.Color(0, 51, 204));
         jTextField12.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jTextField12.setForeground(new java.awt.Color(255, 204, 0));
         jTextField12.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -255,6 +254,7 @@ public class BingoCard extends javax.swing.JFrame {
             }
         });
 
+        jTextField14.setBackground(new java.awt.Color(0, 51, 204));
         jTextField14.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jTextField14.setForeground(new java.awt.Color(255, 204, 0));
         jTextField14.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -274,6 +274,7 @@ public class BingoCard extends javax.swing.JFrame {
             }
         });
 
+        jTextField23.setBackground(new java.awt.Color(0, 51, 204));
         jTextField23.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jTextField23.setForeground(new java.awt.Color(255, 204, 0));
         jTextField23.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -293,6 +294,7 @@ public class BingoCard extends javax.swing.JFrame {
             }
         });
 
+        jTextField10.setBackground(new java.awt.Color(0, 51, 204));
         jTextField10.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jTextField10.setForeground(new java.awt.Color(255, 204, 0));
         jTextField10.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -312,6 +314,7 @@ public class BingoCard extends javax.swing.JFrame {
             }
         });
 
+        jTextField9.setBackground(new java.awt.Color(0, 51, 204));
         jTextField9.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jTextField9.setForeground(new java.awt.Color(255, 204, 0));
         jTextField9.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -331,6 +334,7 @@ public class BingoCard extends javax.swing.JFrame {
             }
         });
 
+        jTextField18.setBackground(new java.awt.Color(0, 51, 204));
         jTextField18.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jTextField18.setForeground(new java.awt.Color(255, 204, 0));
         jTextField18.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -350,6 +354,7 @@ public class BingoCard extends javax.swing.JFrame {
             }
         });
 
+        jTextField21.setBackground(new java.awt.Color(0, 51, 204));
         jTextField21.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jTextField21.setForeground(new java.awt.Color(255, 204, 0));
         jTextField21.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -369,6 +374,7 @@ public class BingoCard extends javax.swing.JFrame {
             }
         });
 
+        jTextField27.setBackground(new java.awt.Color(0, 51, 204));
         jTextField27.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jTextField27.setForeground(new java.awt.Color(255, 204, 0));
         jTextField27.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -486,6 +492,7 @@ public class BingoCard extends javax.swing.JFrame {
 
         jPanel4.setBackground(new java.awt.Color(204, 0, 102));
 
+        jTextField28.setBackground(new java.awt.Color(153, 0, 51));
         jTextField28.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jTextField28.setForeground(new java.awt.Color(255, 204, 0));
         jTextField28.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -495,6 +502,7 @@ public class BingoCard extends javax.swing.JFrame {
         jTextField29.setForeground(new java.awt.Color(255, 204, 0));
         jTextField29.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
+        jTextField32.setBackground(new java.awt.Color(153, 0, 51));
         jTextField32.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jTextField32.setForeground(new java.awt.Color(255, 204, 0));
         jTextField32.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -504,6 +512,7 @@ public class BingoCard extends javax.swing.JFrame {
         jTextField30.setForeground(new java.awt.Color(255, 204, 0));
         jTextField30.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
+        jTextField31.setBackground(new java.awt.Color(153, 0, 51));
         jTextField31.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jTextField31.setForeground(new java.awt.Color(255, 204, 0));
         jTextField31.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -513,6 +522,7 @@ public class BingoCard extends javax.swing.JFrame {
         jTextField33.setForeground(new java.awt.Color(255, 204, 0));
         jTextField33.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
+        jTextField46.setBackground(new java.awt.Color(153, 0, 51));
         jTextField46.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jTextField46.setForeground(new java.awt.Color(255, 204, 0));
         jTextField46.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -532,6 +542,7 @@ public class BingoCard extends javax.swing.JFrame {
             }
         });
 
+        jTextField52.setBackground(new java.awt.Color(153, 0, 51));
         jTextField52.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jTextField52.setForeground(new java.awt.Color(255, 204, 0));
         jTextField52.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -551,6 +562,7 @@ public class BingoCard extends javax.swing.JFrame {
             }
         });
 
+        jTextField35.setBackground(new java.awt.Color(153, 0, 51));
         jTextField35.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jTextField35.setForeground(new java.awt.Color(255, 204, 0));
         jTextField35.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -570,6 +582,7 @@ public class BingoCard extends javax.swing.JFrame {
             }
         });
 
+        jTextField39.setBackground(new java.awt.Color(153, 0, 51));
         jTextField39.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jTextField39.setForeground(new java.awt.Color(255, 204, 0));
         jTextField39.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -589,6 +602,7 @@ public class BingoCard extends javax.swing.JFrame {
             }
         });
 
+        jTextField41.setBackground(new java.awt.Color(153, 0, 51));
         jTextField41.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jTextField41.setForeground(new java.awt.Color(255, 204, 0));
         jTextField41.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -608,6 +622,7 @@ public class BingoCard extends javax.swing.JFrame {
             }
         });
 
+        jTextField50.setBackground(new java.awt.Color(153, 0, 51));
         jTextField50.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jTextField50.setForeground(new java.awt.Color(255, 204, 0));
         jTextField50.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -627,6 +642,7 @@ public class BingoCard extends javax.swing.JFrame {
             }
         });
 
+        jTextField37.setBackground(new java.awt.Color(153, 0, 51));
         jTextField37.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jTextField37.setForeground(new java.awt.Color(255, 204, 0));
         jTextField37.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -646,6 +662,7 @@ public class BingoCard extends javax.swing.JFrame {
             }
         });
 
+        jTextField36.setBackground(new java.awt.Color(153, 0, 51));
         jTextField36.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jTextField36.setForeground(new java.awt.Color(255, 204, 0));
         jTextField36.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -665,6 +682,7 @@ public class BingoCard extends javax.swing.JFrame {
             }
         });
 
+        jTextField45.setBackground(new java.awt.Color(153, 0, 51));
         jTextField45.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jTextField45.setForeground(new java.awt.Color(255, 204, 0));
         jTextField45.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -684,6 +702,7 @@ public class BingoCard extends javax.swing.JFrame {
             }
         });
 
+        jTextField48.setBackground(new java.awt.Color(153, 0, 51));
         jTextField48.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jTextField48.setForeground(new java.awt.Color(255, 204, 0));
         jTextField48.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -703,6 +722,7 @@ public class BingoCard extends javax.swing.JFrame {
             }
         });
 
+        jTextField54.setBackground(new java.awt.Color(153, 0, 51));
         jTextField54.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jTextField54.setForeground(new java.awt.Color(255, 204, 0));
         jTextField54.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -828,22 +848,13 @@ public class BingoCard extends javax.swing.JFrame {
 
         jLabel1.setBackground(new java.awt.Color(204, 204, 204));
         jLabel1.setFont(new java.awt.Font("Segoe UI Black", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(51, 102, 0));
+        jLabel1.setForeground(new java.awt.Color(102, 102, 102));
         jLabel1.setText("Player 1");
 
         jLabel2.setBackground(new java.awt.Color(204, 204, 204));
         jLabel2.setFont(new java.awt.Font("Segoe UI Black", 1, 24)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(51, 102, 0));
+        jLabel2.setForeground(new java.awt.Color(102, 102, 102));
         jLabel2.setText("Player 2");
-
-        startbutton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        startbutton.setForeground(new java.awt.Color(51, 102, 0));
-        startbutton.setText("START");
-        startbutton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                startbuttonActionPerformed(evt);
-            }
-        });
 
         cinkobutton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         cinkobutton.setForeground(new java.awt.Color(51, 102, 0));
@@ -854,7 +865,7 @@ public class BingoCard extends javax.swing.JFrame {
             }
         });
 
-        jtextArea1.setBackground(new java.awt.Color(255, 204, 0));
+        jtextArea1.setBackground(new java.awt.Color(255, 255, 255));
         jtextArea1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
 
         jLabel3.setBackground(new java.awt.Color(0, 102, 102));
@@ -868,7 +879,6 @@ public class BingoCard extends javax.swing.JFrame {
         jLabel4.setText("Bingo Game...");
 
         JPanel2_Label.setFont(new java.awt.Font("Imprint MT Shadow", 2, 18)); // NOI18N
-        JPanel2_Label.setText("hey");
         JPanel2_Label.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 204)));
 
         JPanel4_Label.setBackground(new java.awt.Color(153, 153, 0));
@@ -883,7 +893,7 @@ public class BingoCard extends javax.swing.JFrame {
                 .addGap(24, 24, 24)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jtextArea1, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jtextArea1, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -902,13 +912,15 @@ public class BingoCard extends javax.swing.JFrame {
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(35, 35, 35))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(42, 42, 42)
-                        .addComponent(JPanel4_Label, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(169, 169, 169)
-                        .addComponent(startbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(cinkobutton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(42, 42, 42)
+                                .addComponent(JPanel4_Label, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(cinkobutton)
+                                .addGap(194, 194, 194)))
                         .addComponent(JPanel2_Label, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(127, 127, 127))))
         );
@@ -936,19 +948,18 @@ public class BingoCard extends javax.swing.JFrame {
                         .addGap(33, 33, 33)
                         .addComponent(jtextArea1, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGap(36, 36, 36)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(startbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(cinkobutton, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(101, 101, 101))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                .addGap(36, 36, 36)
                                 .addComponent(JPanel2_Label, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(cancelbutton)
-                            .addComponent(jLabel4))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(cancelbutton)
+                                    .addComponent(jLabel4)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(cinkobutton, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(104, 104, 104)))))
                 .addGap(20, 20, 20))
         );
 
@@ -1140,28 +1151,25 @@ public class BingoCard extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_cancelbuttonActionPerformed
 
-    private boolean startButtonClicked = false;
-
     // Rastgele 4 text filedı seçip mavi renge boyayan metod
     private void colorRandomFields(JTextField[][] fields) {
-    Random random = new Random();
+        Random random = new Random();
 
-    for (JTextField[] row : fields) {
-        Set<Integer> selectedIndexes = new HashSet<>();
+        for (JTextField[] row : fields) {
+            Set<Integer> selectedIndexes = new HashSet<>();
 
-        // Rastgele 4 index seçelim
-        while (selectedIndexes.size() < 4) {
-            int index = random.nextInt(row.length);
-            selectedIndexes.add(index);
-        }
+            // Rastgele 4 index seçelim
+            while (selectedIndexes.size() < 4) {
+                int index = random.nextInt(row.length);
+                selectedIndexes.add(index);
+            }
 
-        // Seçilen indexlere sahip olan text filedları mavi renge boyayalım
-        for (int index : selectedIndexes) {
-            row[index].setBackground(Color.ORANGE);
+            // Seçilen indexlere sahip olan text filedları BEY renge boyayalım
+            for (int index : selectedIndexes) {
+                row[index].setBackground(Color.WHITE);
+            }
         }
     }
-}
-
 
     private int generateUniqueRandomNumber(Set<Integer> usedNumbers) {
         int randomNumber;
@@ -1172,60 +1180,58 @@ public class BingoCard extends javax.swing.JFrame {
 
     }
 
-    private void startbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startbuttonActionPerformed
-
-        // Start buttonuna basıldıktan sonra kullanıcı cinkobutton'a basabilir
-        startButtonClicked = true;
-
-
-    }//GEN-LAST:event_startbuttonActionPerformed
-
-    /* private void fillTextFields(JTextField[][] textFields) {
-        // Kullanılan sayıları takip etmek için bir HashSet oluştur
+    private void fillAllNumbers(JTextField[][] fields, MultiLinkedList linkedlist) {
         Set<Integer> usedNumbers = new HashSet<>();
 
-        // Her bir satır için
-        for (int row = 0; row < textFields.length; row++) {
-            // Satırdaki tüm JTextField'ları doldur
-            fillAllNumbers(textFields[row], usedNumbers, row * 10 + 1, row * 10 + 9);
-
-            // Ardından, rastgele 5 JTextField'ı seç
-            selectRandomFields(textFields[row]);
-        }
-    }*/
-    private void fillAllNumbers(JTextField[][] fields) {
-        // Rastgele sayıları belirli bir aralıkta doldurmak için
-
-        Set<Integer> usedNumbers = new HashSet<>();
-        int number = 0;
-        int numb = 0;
+        int numb;
         int origin = 1;
         int bound = 9;
-        int index = 1;
-        int numbbb = 1;
-        for (int i = 0; i < 9; i++) {
-            index=numbbb++;
-            for (int j = 0; j < 3; j++) {
-                 if(fields[j][i].getBackground()!=Color.orange){
-                if (i == number) {
 
+        int row1 = 0;
+        int row2 = 0;
+        int row3 = 0;
+
+        for (int i = 0; i < 9; i++) {
+
+            int number = 0;
+
+            for (int j = 0; j < 3; j++) {
+                if (fields[j][i].getBackground() != Color.white) {
                     numb = generateUniqueRandomNumber(usedNumbers, origin, bound);
                     fields[j][i].setText(numb + "");
-                    //m2.getNodeFromIndex(index).data=numb;
-                    System.out.println(index);
-                    
-                    index+=5;
+
+                    int index = (j * 5) + 1;
+                    switch (j) {
+                        case 0 -> {
+                            index += row1;
+                            row1++;
+                        }
+
+                        case 1 -> {
+
+                            index += row2;
+                            row2++;
+                        }
+                        case 2 -> {
+
+                            index += row3;
+                            row3++;
+                        }
+                    }
+
+                    System.out.println("index: " + (index + 1));
+                    linkedlist.getNodeFromIndex(index).data = numb;
+
+                    number++;
                 }
-                 }else{
-                     index+=5;
-                             
-                 }
-                 
+
             }
-            number++;
+
             origin += 10;
             bound += 10;
+
         }
+
     }
 
     public static int generateUniqueRandomNumber(Set<Integer> usedNumbers, int minRange, int maxRange) {
@@ -1261,7 +1267,7 @@ public class BingoCard extends javax.swing.JFrame {
             if (!text.isEmpty()) {
                 int fieldValue = Integer.parseInt(text);
                 if (fieldValue == randomNumber) {
-                    textField.setBackground(Color.yellow);
+                    textField.setBackground(Color.BLACK);
                     numberFound = true;
                 }
             }
@@ -1275,13 +1281,6 @@ public class BingoCard extends javax.swing.JFrame {
 
     private void cinkobuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cinkobuttonActionPerformed
         // TODO add your handling code here:
-
-        // Start button'a basıldıktan sonra cinkobutton'a basılmalı
-        if (!startButtonClicked) {
-            // Eğer start button'a basılmadıysa, kullanıcıya bir mesaj göster
-            JOptionPane.showMessageDialog(this, "You must first press the Start button.", "Warning", JOptionPane.WARNING_MESSAGE);
-            return; // Metodu burada sonlandır
-        }
 
         // Tüm JTextField'ları bir diziye topla
         JTextField[] allTextFields = {
@@ -1417,6 +1416,5 @@ public class BingoCard extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField jTextField9;
     private java.awt.TextArea jtextArea1;
-    private javax.swing.JButton startbutton;
     // End of variables declaration//GEN-END:variables
 }
